@@ -8,7 +8,7 @@ Built using Node.js, Express, MongoDB, and Mongoose.
 Install
 -
 
-Clone this repo: `git clone bhttps://github.com/seankoneill/movie-db`
+Clone this repo: `git clone https://github.com/seankoneill/movie-db`
 
 Install dependencies: `npm install`
 
