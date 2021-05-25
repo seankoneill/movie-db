@@ -16,4 +16,4 @@ Start the mongod daemon: `mongod --dbpath=<dbpath>`
 
 Run locally: `npm start`
 
-View at: `http://localhost:3000/login`
+View at: `http://localhost:3000/`
