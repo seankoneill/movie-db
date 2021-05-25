@@ -1,9 +1,0 @@
-Name: Sean O'Neill
-Student #: 101048065
-
-Instructions: 
-Get dependencies using npm: npm install
-Run the database-initialization.js file use node
-8 movies should fail the validation
-Once the initialization is complete start the node server by running the server.js file
-The server should now listening at localhost:3000 and can be visted through a web browser
