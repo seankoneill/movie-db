@@ -1,0 +1,59 @@
+html
+  head
+    title #{person.name}
+    meta(charset="utf-8")
+    link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP")
+    link(rel="stylesheet" href="../css/main.css")
+
+  body
+    include partials/header.pug
+
+    div(class="row-container")
+
+      div(class="profile")
+        img(src="../img/default-profile.jpg" alt="Profile Image" class="profile-pic")
+        h1 #{person.name}
+        form(action="/users/"+currentUser+"/followedPeople" method="post")
+          button(class="btn btn-small" type="submit" name="addId" value=person._id) Follow #{person.name}
+
+      div(class="tabs")
+
+        ul(class="nav nav-tabs" id="myTab" role="tablist")
+          li(class="nav-item" role="presentation")
+            button(class="nav-link" id="directed-tab" data-bs-toggle="tab" data-bs-target="#directed" type="button" role="tab" aria-controls="directed" aria-selected="true") Directed
+          li(class="nav-item" role="presentation")
+            button(class="nav-link" id="wrote-tab" data-bs-toggle="tab" data-bs-target="#wrote" type="button" role="tab" aria-controls="wrote" aria-selected="false") Wrote
+          li(class="nav-item" role="presentation")
+            button(class="nav-link" id="cast-tab" data-bs-toggle="tab" data-bs-target="#acted" type="button" role="tab" aria-controls="acted" aria-selected="false") Acted In
+          li(class="nav-item" role="presentation")
+            button(class="nav-link" id="cast-tab" data-bs-toggle="tab" data-bs-target="#collaborators" type="button" role="tab" aria-controls="collaborators" aria-selected="false") Frequent Collaborators
+
+        div(class="tab-content" id="myTabContent")
+          div(class="tab-pane fade show active" id="directed" role="tabpanel" aria-labelledby="directed-tab")
+            div(class="container")
+              if person.directed.length > 0
+                each d in person.directed
+                  a(href="../movies/"+d._id) #{d.title}
+                  br
+
+          div(class="tab-pane fade" id="wrote" role="tabpanel" aria-labelledby="wrote-tab")
+            div(class="container")
+              if person.wrote.length > 0
+                each w in person.wrote
+                  a(href="../movies/"+w._id) #{w.title}
+                  br
+
+          div(class="tab-pane fade" id="acted" role="tabpanel" aria-labelledby="acted-tab")
+            div(class="container")
+              if person.acted.length > 0
+                each a in person.acted
+                  a(href="../movies/"+a._id) #{a.title}
+                  br
+
+          div(class="tab-pane fade" id="collaborators" role="tabpanel" aria-labelledby="collaborators-tab")
+            div(class="container")
+              if person.collaborators.length > 0
+                each c in person.collaborators
+                  a(href=c.pId) #{c.name}
+                  br

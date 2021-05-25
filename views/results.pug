@@ -1,0 +1,19 @@
+html
+  head
+    title Search Results Page #{page}
+    include partials/meta.pug
+
+  body
+    include partials/header.pug
+    h1 #{results.header}
+    div(class="center-container")
+      div(class="list")
+        if results.links.length > 0
+          each link in results.links
+            a(href="/"+results.path+"/"+link.id) #{link.text}
+            br
+      div(class="row-container")
+        h3
+          a(href="/"+prevString) Prev
+        h3
+          a(href="/"+nextString) Next
